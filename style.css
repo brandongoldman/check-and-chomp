@@ -1,0 +1,79 @@
+.tableRows{
+	height: auto;
+}
+
+.textAndSearch{
+	align: center;
+}
+
+.topBar{
+	position: fixed;
+	padding-top: 1%; 
+	padding-bottom: 1%; 
+	background-color: orange; 
+	height: 125;
+}
+
+.description{
+	text-align: center; 
+	font-style: italic; 
+}
+
+.form-control:focus {
+ 	box-shadow:none;
+ 	-webkit-box-shadow:none; 
+ 	border-color:#cccccc; 
+}
+
+.notHeader{
+	margin-top: 125; 
+	overflow: auto;
+}
+
+.logos{
+	height: 100;
+	width: 100;
+	display: block;
+    	margin: auto;
+}
+
+.miles{
+	text-align: center;
+	padding-top: 10; 
+}
+
+.siteLogo{
+	display: block;
+    margin: auto;
+    width: 200;
+    height: 100; 
+}
+
+.locationName{
+	text-align: center; 
+}
+.openTill{
+	text-align: center;
+	padding-top: 10; 
+}
+.locationPreview{
+	display: block;
+    margin: auto;
+}
+.expandedInformation{
+	display:none;
+}
+
+tr.tableRows:hover {
+	background-color: rgba(173,216,230, 0.2);
+}
+
+.weeklyHours{
+	display: block;
+    margin: auto;
+    text-align: center;
+}
+.table th, .table td { 
+     border-top: none !important; 
+ }
+
