@@ -427,18 +427,18 @@ db.info().then(function (info) {
 //   console.log('We have a database: ' + JSON.stringify(doc));
 // });
 
-function toggleWeeklyHours(_self, data) {
-  $('#weeklyData').html(data);
-  $(_self).closest('tr').next('.expandedInformation').toggle();
-}
-
-$('.tableRows').click(function(){
-  var data;
-  var _self = this;
-  db.get('Croutons').then(function (doc) {
-    data = JSON.stringify(doc, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], '\n')
-    .replace(/['"{}]+/g, '').replace(/[,]+/g, '<br>');
-    console.log(data);
-    toggleWeeklyHours(_self, data);
-  });
-});
+// function toggleWeeklyHours(_self, data) {
+//   $('#weeklyData').html(data);
+//   $(_self).closest('tr').next('.expandedInformation').toggle();
+// }
+//
+// $('.tableRows').click(function(){
+//   $.getJSON("regularHours.json", function(data) {
+//     console.log(data);
+    // data is a JavaScript object now. Handle it as such
+    // var stuff = JSON.stringify(doc, ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], '\n')
+    //   .replace(/['"{}]+/g, '').replace(/[,]+/g, '<br>');
+    //   console.log(stuff);
+      //toggleWeeklyHours(_self, stuff);
+//     });
+// });

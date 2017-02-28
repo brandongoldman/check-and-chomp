@@ -7,7 +7,9 @@ function initMap() {
     });
 }
 
-// $('.tableRows').click(function(){
-// 	$(this).closest('tr').next('.expandedInformation').toggle();
-//
-// });
+$('.tableRows').click(function(){
+	$(this).closest('tr').next('.expandedInformation').toggle();
+  $.getJSON("regularHours.json", function(data) {
+    console.log(data);
+  });
+});
