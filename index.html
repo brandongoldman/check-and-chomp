@@ -3,7 +3,7 @@
 	    <title>Check&&Chomp</title>
 	</head>
 
-	<body class="body">	
+	<body class="body">
 
 	<div class="col-md-12 topBar">
 		<div class="container title">
@@ -37,13 +37,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5>Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td class="displayMap" id="map">
 			    	</td>
@@ -58,13 +58,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5>Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
-			    		<h6>Tuesday: 10:30-7</h6>
+			    		<h6 id="weeklyData"></h6>
+			    		<!-- <h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6> -->
 			    	</td>
 			    	<td class="displayMap" id="map">
 			    	</td>
@@ -79,13 +79,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5>Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td class="displayMap" id="map">
 			    	</td>
@@ -100,13 +100,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5>Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td class="displayMap" id="map">
 			    	</td>
@@ -121,13 +121,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5>Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td class="displayMap" id="map">
 			    	</td>
@@ -142,13 +142,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5>Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td class="displayMap" id="map">
 			    	</td>
@@ -164,6 +164,8 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/pouchdb/latest/pouchdb.min.js"></script>
+<script type="text/javascript" src="db.js"></script>
 <script type="text/javascript" src="app.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMek8LdLVKE5cK71pCl9gg1GAgSGG-Nmk&callback=initMap"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
