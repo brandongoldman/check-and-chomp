@@ -1,3 +1,8 @@
+#map{
+	height: 100%;
+	width: 100%;
+}
+
 .tableRows{
 	height: auto;
 }
@@ -11,7 +16,7 @@
 	padding-top: 1%; 
 	padding-bottom: 1%; 
 	background-color: orange; 
-	height: 125;
+	height: 14%;
 }
 
 .description{
@@ -26,7 +31,7 @@
 }
 
 .notHeader{
-	margin-top: 125; 
+	margin-top: 14%; 
 	overflow: auto;
 }
 
@@ -34,7 +39,7 @@
 	height: 100;
 	width: 100;
 	display: block;
-    	margin: auto;
+    margin: auto;
 }
 
 .miles{
@@ -76,4 +81,6 @@ tr.tableRows:hover {
 .table th, .table td { 
      border-top: none !important; 
  }
-
+.hoursHeading{
+	font-weight: bold; 
+}
