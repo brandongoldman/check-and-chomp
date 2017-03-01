@@ -107,7 +107,7 @@
    "Friday": "8:00 AM &#45; 1:00 PM",
    "Saturday": "7:00 AM &#45; 4:00 PM",
    "Sunday": "7:00 AM &#45; 4:00 PM",
-   "logoLocation": "locationLogos/whichone?.png"
+   "logoLocation": "locationLogos/HoughHallChomp&Go.png"
 },
 {
    "_id": "Hub Chick-fil-A",
@@ -162,7 +162,7 @@
    "Friday": "7:30 AM &#45; 12:30 PM",
    "Saturday": "CLOSED",
    "Sunday": "CLOSED",
-   "logoLocation": "locationLogos/whoknows.png"
+   "logoLocation": "locationLogos/LawSchoolCafe.png"
  },
  {
    "_id": "Library West Starbucks",
@@ -184,7 +184,7 @@
    "Friday": "7:00 AM &#45; 4:00 PM",
    "Saturday": "CLOSED",
    "Sunday": "CLOSED",
-   "logoLocation": "locationLogos/yum.png"
+   "logoLocation": "locationLogos/LittleHallExpress.png"
 },
 {
    "_id": "Marston Science Library Starbucks",
@@ -217,7 +217,7 @@
    "Friday": "8:00 AM &#45; 2:30 PM",
    "Saturday": "CLOSED",
    "Sunday": "CLOSED",
-   "logoLocation": "locationLogos/idk.png"
+   "logoLocation": "locationLogos/OrthopaedicBldgCafe.png"
 },
 {
    "_id": "Pugh Hall Chomp & Go",
@@ -228,7 +228,7 @@
    "Friday": "8:00 AM &#45; 2:00 PM",
    "Saturday": "CLOSED",
    "Sunday": "CLOSED",
-   "logoLocation": "locationLogos/idk.png"
+   "logoLocation": "locationLogos/PoughHallChomp&Go.png"
  },
  {
    "_id": "Rawlings POD / Subway",
