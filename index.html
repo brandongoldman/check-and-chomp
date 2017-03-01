@@ -33,7 +33,7 @@
 		</div>
 	</div>-->
     
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="onPageLoad()">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -63,7 +63,7 @@
 			<table class="table borderless notHeader">
 			  <tbody>
 			    <tr class="tableRows">
-			      <td class="col-md-4"><img src="locationLogos/chickfilaLogo.jpeg" alt="Chickfila Logo" class="logos"><p class="miles">0.8 miles</p></td>
+			      <td class="col-md-4"><img src="locationLogos/chickfilaLogo.jpeg" alt="Chickfila Logo" class="logos"><p class="miles" id="theMiles">0.8 miles</p></td>
 			      <td class="locationPreview">
 			      	<h3 class="locationName">Hub Chick-fil-a</h3>
 			      	<h4 class="openTill">Open till 7pm</h4>
@@ -207,6 +207,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMek8LdLVKE5cK71pCl9gg1GAgSGG-Nmk&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMek8LdLVKE5cK71pCl9gg1GAgSGG-Nmk&callback=myMap"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
