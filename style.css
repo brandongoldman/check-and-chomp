@@ -118,6 +118,11 @@ tr.tableRows:hover {
   .bg-grey {
       background-color: #f6f6f6;
   }
+
+  .btn-searchIcon {
+    padding: 9.25px 15px;
+    line-height: normal;
+    }
   .logo-small {
       color: #f4511e;
       font-size: 50px;
