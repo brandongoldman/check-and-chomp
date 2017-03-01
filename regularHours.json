@@ -74,7 +74,7 @@
    "Friday": "9:00 AM &#45; 3:00 AM",
    "Saturday": "10:00 AM &#45; 3:00 AM",
    "Sunday": "10:00 AM &#45; 3:00 AM",
-   "logoLocation": "locationLogos/whichone?.png"
+   "logoLocation": "locationLogos/GrahamPod_ChompIt.png"
  },
  {
    "_id": "Harn Camellia Court Café",
@@ -239,7 +239,7 @@
    "Friday": "7:00 AM &#45; 1:00 AM",
    "Saturday": "10:00 AM &#45; 1:00 AM",
    "Sunday": "10:00 AM &#45; 1:00 AM",
-   "logoLocation": "locationLogos/whichone.png"
+   "logoLocation": "locationLogos/RawlingsPod_Subway.png"
 },
 {
    "_id": "Sun Terrace Chick-fil-A",
@@ -371,7 +371,7 @@
    "Friday": "9:00 AM &#45; 10:30 PM",
    "Saturday": "11:00 AM &#45; 8:00 PM",
    "Sunday": "NOON &#45; 8:00 PM",
-   "logoLocation": "locationLogos/whichone?.png"
+   "logoLocation": "locationLogos/ReitzPod_Freshens.png"
  },
  {
    "_id": "Panda Express",
