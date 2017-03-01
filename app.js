@@ -56,14 +56,6 @@ function initMap() {
                               'Error: Your browser doesn\'t support geolocation.');
       }
 
-$('.tableRows').click(function(){
-	$(this).closest('tr').next('.expandedInformation').toggle();
-	resize();
-  $.getJSON("regularHours.json", function(data) {
-    console.log(data);
-  }); 
-});
-
 function resize(){
 	console.log('resizing map');
     google.maps.event.trigger(map, 'resize');
@@ -71,3 +63,27 @@ function resize(){
 
 //source: https://developers.google.com/maps/documentation/javascript/examples/marker-simple
 //source: https://developers.google.com/maps/documentation/javascript/geolocation
+
+$.getJSON("regularHours.json", function(data) {
+  console.log(data);
+  var index = 0;
+  $.each(data, function (key, val) {
+    console.log(val._id);
+    var content1 = "<tr class=\"tableRows\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"locationLogos/chickfilaLogo.jpeg\" alt=\"Chickfila Logo\" class=\"logos\"><p class=\"miles\">0.8 miles</p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\">Open till 7pm</h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoad" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map\"> </td> </tr>";
+    $("#dynamicRowLoad").append(content1);
+    var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
+    $("#dynamicHoursLoad" + index).html(content2);
+    console.log(content2);
+    ++index;
+  });
+});
+
+$('.tableRows').click(function(){
+	$(this).closest('tr').next('.expandedInformation').toggle();
+	resize();
+});
+
+$('#dynamicRowLoad').on('click', '.tableRows', function() {
+ $(this).closest('tr').next('.expandedInformation').toggle();
+ resize();
+});

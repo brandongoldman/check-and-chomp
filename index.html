@@ -12,8 +12,8 @@
   <script src="https://use.fontawesome.com/3ae87dc7a2.js"></script>
 	</head>
 
-	<!--<body class="body">	
-    
+	<!--<body class="body">
+
 	<div class="col-md-12 topBar">
 		<div class="container title">
 			<div class="img col-md-4">
@@ -32,7 +32,7 @@
 			</div>
 		</div>
 	</div>-->
-    
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -41,7 +41,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#myPage">Check && Chomp</a>
     </div>
@@ -61,8 +61,9 @@
 
 		<div class="container">
 			<table class="table borderless notHeader">
-			  <tbody>
-			    <tr class="tableRows">
+			  <tbody id="dynamicRowLoad">
+					<!-- <div id="dynamicRowLoad"></div> -->
+			    <!-- <tr class="tableRows">
 			      <td class="col-md-4"><img src="locationLogos/chickfilaLogo.jpeg" alt="Chickfila Logo" class="logos"><p class="miles">0.8 miles</p></td>
 			      <td class="locationPreview">
 			      	<h3 class="locationName">Hub Chick-fil-a</h3>
@@ -74,18 +75,19 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5 class="hoursHeading">Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+							<h6 id="dynamicRowLoad"></h6>
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td class="displayMap" id="map">
 			    	</td>
-			    </tr>
-			    <tr class="tableRows">
+			    </tr> -->
+			    <!-- <tr class="tableRows">
 			      <td class="col-md-4"><img src="locationLogos/einsteinbrosLogo.jpg" alt="Einstein Bros Logo" class="logos"><p class="miles">0.8 miles</p></td>
 			      <td class="locationPreview">
 			      	<h3 class="locationName">Hub Einstein Bros Bagels</h3>
@@ -96,13 +98,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5 class="hoursHeading">Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td>
 			    	</td>
@@ -118,13 +120,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5 class="hoursHeading">Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td>
 			    	</td>
@@ -140,13 +142,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5 class="hoursHeading">Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td>
 			    	</td>
@@ -162,13 +164,13 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5 class="hoursHeading">Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td>
 			    	</td>
@@ -184,23 +186,20 @@
 			    <tr class="expandedInformation">
 			    	<td class="col-md-4 weeklyHours">
 			    		<h5 class="hoursHeading">Weekly Hours</h5>
-			    		<h6>Monday: 10:30-7</h6>	
+			    		<h6>Monday: 10:30-7</h6>
 			    		<h6>Tuesday: 10:30-7</h6>
 			    		<h6>Wednesday: 10:30-7</h6>
 			    		<h6>Thursday: 10:30-7</h6>
 			    		<h6>Friday: 10:30-6</h6>
 			    		<h6>Saturday: Closed</h6>
-			    		<h6>Sunday: Closed</h6>		
+			    		<h6>Sunday: Closed</h6>
 			    	</td>
 			    	<td>
 			    	</td>
-			    </tr>
+			    </tr> -->
 			  </tbody>
 			</table>
 		</div>
-
-
-
 	</body>
 </html>
 
