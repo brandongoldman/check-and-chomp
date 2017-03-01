@@ -7,7 +7,8 @@
   "Thursday": "9:00 AM &#45; 3:00 AM",
    "Friday": "9:00 AM &#45; 3:00 AM",
    "Saturday": "10:00 AM &#45; 3:00 AM",
-   "Sunday": "10:00 AM &#45; 3:00 AM"
+   "Sunday": "10:00 AM &#45; 3:00 AM",
+   "logoLocation": "locationLogos/Pod.png"
 },
 {
    "_id": "Broward Dining Center Chick-Fil-A",
@@ -17,7 +18,8 @@
    "Thursday": "10:00 AM &#45; 8:00 PM",
    "Friday": "10:00 AM &#45; 6:00 PM",
    "Saturday": "10:00 AM &#45; 6:00 PM",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/chickfila.png"
 },
 {
    "_id": "Chomp It @ Racquet Club Dining Center",
@@ -27,7 +29,8 @@
    "Thursday": "10:30 AM &#45; 6:30 PM",
    "Friday": "10:30 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/ChompIt.png"
 },
 {
    "_id": "Engineering Bldg Java City",
@@ -37,7 +40,8 @@
    "Thursday": "8:00 AM &#45; 3:00 PM",
    "Friday": "8:00 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/JavaCity.png"
 },
 {
    "_id": "Fresh Food Company",
@@ -47,7 +51,8 @@
    "Thursday": "7:00 AM &#45; 11:00 PM",
    "Friday": "7:00 AM &#45; 10:00 PM",
    "Saturday": "8:30 AM &#45; 10:00 PM",
-   "Sunday": "8:30 AM &#45; 10:00 PM"
+   "Sunday": "8:30 AM &#45; 10:00 PM",
+   "logoLocation": "locationLogos/FreshFoodCompany.png"
 },
 {
    "_id": "Gator Corner Dining Center",
@@ -57,7 +62,8 @@
    "Thursday": "7:00 AM &#45; 11:00 PM",
    "Friday": "7:00 AM &#45; 10:00 PM",
    "Saturday": "8:30 AM &#45; 10:00 PM",
-   "Sunday": "8:30 AM &#45; 10:00 PM"
+   "Sunday": "8:30 AM &#45; 10:00 PM",
+   "logoLocation": "locationLogos/GatorCorner.png"
  },
  {
    "_id": "Graham POD / Chomp It",
@@ -67,7 +73,8 @@
    "Thursday": "9:00 AM &#45; 3:00 AM",
    "Friday": "9:00 AM &#45; 3:00 AM",
    "Saturday": "10:00 AM &#45; 3:00 AM",
-   "Sunday": "10:00 AM &#45; 3:00 AM"
+   "Sunday": "10:00 AM &#45; 3:00 AM",
+   "logoLocation": "locationLogos/whichone?.png"
  },
  {
    "_id": "Harn Camellia Court Café",
@@ -77,7 +84,8 @@
    "Thursday": "11:00 AM &#45; 2:00 PM",
    "Friday": "11:00 AM &#45; 2:00 PM",
    "Saturday": "11:00 AM &#45; 2:00 PM",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/CamelliaCourt.png"
 },
 {
    "_id": "Heavener Hall Rising Roll",
@@ -87,7 +95,8 @@
    "Thursday": "8:00 AM &#45; 3:00 PM",
    "Friday": "8:00 AM &#45; 2:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/RisingRoll.png"
  },
  {
    "_id": "Hough Hall Chomp & Go",
@@ -97,7 +106,8 @@
    "Thursday": "8:00 AM &#45; 3:00 PM",
    "Friday": "8:00 AM &#45; 1:00 PM",
    "Saturday": "7:00 AM &#45; 4:00 PM",
-   "Sunday": "7:00 AM &#45; 4:00 PM"
+   "Sunday": "7:00 AM &#45; 4:00 PM",
+   "logoLocation": "locationLogos/whichone?.png"
 },
 {
    "_id": "Hub Chick-fil-A",
@@ -107,7 +117,8 @@
    "Thursday": "9:00 AM &#45; 7:00 PM",
    "Friday": "9:00 AM &#45; 6:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/chickfila.png"
 },
 {
    "_id": "Hub Einstein Bros. Bagels",
@@ -117,7 +128,8 @@
    "Thursday": "7:00 AM &#45; 4:00 PM",
    "Friday": "7:00 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/EinsteinBros.png"
  },
  {
    "_id": "Hub POD",
@@ -127,7 +139,8 @@
    "Thursday": "8:00 AM &#45; 7:00 PM",
    "Friday": "8:00 AM &#45; 6:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/Pod.png"
 },
 {
    "_id": "Hub Starbucks",
@@ -137,7 +150,8 @@
    "Thursday": "7:30 AM &#45; 6:00 PM",
    "Friday": "7:30 AM &#45; 4:30 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/Starbucks.png"
  },
  {
    "_id": "Law School Café",
@@ -147,7 +161,8 @@
    "Thursday": "7:30 AM &#45; 3:30 PM",
    "Friday": "7:30 AM &#45; 12:30 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/whoknows.png"
  },
  {
    "_id": "Library West Starbucks",
@@ -157,7 +172,8 @@
    "Thursday": "24 HOURS",
    "Friday": "24 HOURS",
    "Saturday": "24 HOURS",
-   "Sunday": "24 HOURS"
+   "Sunday": "24 HOURS",
+   "logoLocation": "locationLogos/Starbucks.png"
 },
 {
    "_id": "Little Hall Express",
@@ -167,7 +183,8 @@
    "Thursday": "7:00 AM &#45; 5:00 PM",
    "Friday": "7:00 AM &#45; 4:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/yum.png"
 },
 {
    "_id": "Marston Science Library Starbucks",
@@ -177,7 +194,8 @@
    "Thursday": "8:00 AM &#45; 1:00 AM",
    "Friday": "8:00 AM &#45; 10:00 PM",
    "Saturday": "10:00 AM &#45; 6:00 PM",
-   "Sunday": "10:00 AM &#45; 1:00 AM"
+   "Sunday": "10:00 AM &#45; 1:00 AM",
+   "logoLocation": "locationLogos/Starbucks.png"
 },
 {
    "_id": "Moe&#39s Southwest Grill",
@@ -187,7 +205,8 @@
    "Thursday": "10:30 AM &#45; 8:30 PM",
    "Friday": "10:30 AM &#45; 8:00 PM",
    "Saturday": "4:30 PM &#45; 8:00 PM",
-   "Sunday": "4:30 PM &#45; 8:00 PM"
+   "Sunday": "4:30 PM &#45; 8:00 PM",
+   "logoLocation": "locationLogos/Moes.png"
  },
  {
    "_id": "Orthopaedic Bldg Café",
@@ -197,7 +216,8 @@
    "Thursday": "8:00 AM &#45; 2:30 PM",
    "Friday": "8:00 AM &#45; 2:30 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/idk.png"
 },
 {
    "_id": "Pugh Hall Chomp & Go",
@@ -207,7 +227,8 @@
    "Thursday": "8:00 AM &#45; 2:00 PM",
    "Friday": "8:00 AM &#45; 2:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/idk.png"
  },
  {
    "_id": "Rawlings POD / Subway",
@@ -217,7 +238,8 @@
    "Thursday": "7:00 AM &#45; 1:00 AM",
    "Friday": "7:00 AM &#45; 1:00 AM",
    "Saturday": "10:00 AM &#45; 1:00 AM",
-   "Sunday": "10:00 AM &#45; 1:00 AM"
+   "Sunday": "10:00 AM &#45; 1:00 AM",
+   "logoLocation": "locationLogos/whichone.png"
 },
 {
    "_id": "Sun Terrace Chick-fil-A",
@@ -227,7 +249,8 @@
    "Thursday": "10:30 AM &#45; 3:00 PM",
    "Friday": "10:30 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/chickfila.png"
  },
  {
    "_id": "Sun Terrace Einstein Bros. Bagels",
@@ -237,7 +260,8 @@
    "Thursday": "7:00 AM &#45; 2:00 PM",
    "Friday": "7:00 AM &#45; 2:00 PM",
    "Saturday": "CLOSED",
-   "SunPanda": "CLOSED"
+   "SunPanda": "CLOSED",
+   "logoLocation": "locationLogos/EinsteinBros.png"
  },
  {
    "_id": "Sun Terrace Panda Express",
@@ -247,7 +271,8 @@
    "Thursday": "10:30 AM &#45; 3:00 PM",
    "Friday": "10:30 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/PandaExpress.png"
  },
  {
    "_id": "Sun Terrace Salad Creations",
@@ -257,7 +282,8 @@
    "Thursday": "11:00 AM &#45; 2:30 PM",
    "Friday": "11:00 AM &#45; 2:30 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/SaladCreations.png"
  },
  {
    "_id": "Sun Terrace Starbucks",
@@ -267,7 +293,8 @@
    "Thursday": "6:30 AM &#45; 5:00 PM",
    "Friday": "6:30 AM &#45; 4:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/Starbucks.png"
  },
  {
    "_id": "SWRC Freshens",
@@ -277,7 +304,8 @@
    "Thursday": "NOON &#45; 10:30 PM",
    "Friday": "NOON &#45; 10:30 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/Freshens.png"
  },
  {
    "_id": "Turlington Jamba Juice",
@@ -287,7 +315,8 @@
    "Thursday": "9:00 AM &#45; 5:00 PM",
    "Friday": "9:00 AM &#45; 4:00 PM",
    "Saturday": "CLOSED",
-   "Sun": "CLOSED"
+   "Sun": "CLOSED",
+   "logoLocation": "locationLogos/JambaJuice.png"
  },
 {
    "_id": "Turlington Subway",
@@ -297,7 +326,8 @@
    "Thursday": "9:00 AM &#45; 5:00 PM",
    "Friday": "9:00 AM &#45; 5:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/Subway.png"
  },
  {
    "_id": "Vet Med Einstein Bros. Bagels",
@@ -307,7 +337,8 @@
    "Thursday": "7:15 AM &#45; 3:30 PM",
    "Friday": "7:15 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/EinsteinBros.png"
  },
  {
    "_id": "Arredondo Café",
@@ -317,7 +348,8 @@
    "Thursday": "11:00 AM &#45; 1:30 PM",
    "Friday": "11:00 AM &#45; 1:30 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/Arredondo.png"
  },
  {
    "_id": "Croutons",
@@ -327,7 +359,8 @@
    "Thursday": "10:30 AM &#45; 6:00 PM",
    "Friday": "10:30 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/Croutons.png"
  },
  {
    "_id": "Freshens / POD",
@@ -337,7 +370,8 @@
    "Thursday": "9:00 AM &#45; 10:30 PM",
    "Friday": "9:00 AM &#45; 10:30 PM",
    "Saturday": "11:00 AM &#45; 8:00 PM",
-   "Sunday": "NOON &#45; 8:00 PM"
+   "Sunday": "NOON &#45; 8:00 PM",
+   "logoLocation": "locationLogos/whichone?.png"
  },
  {
    "_id": "Panda Express",
@@ -347,7 +381,8 @@
    "Thursday": "10:30 AM &#45; 8:00 PM",
    "Friday": "10:30 AM &#45; 6:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/PandaExpress.png"
  },
  {
    "_id": "Papa John&#39s",
@@ -357,7 +392,8 @@
    "Thursday": "11:00 AM &#45; 3:00 PM",
    "Friday": "11:00 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/PapaJohns.png"
  },
  {
    "_id": "Pollo Tropical",
@@ -367,7 +403,8 @@
    "Thursday": "10:30 AM &#45; 5:30 PM",
    "Friday": "10:30 AM &#45; 3:00 PM",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/PolloTropical.png"
  },
  {
    "_id": "Starbucks @ Reitz Union",
@@ -377,7 +414,8 @@
    "Thursday": "7:00 AM &#45; 7:00 PM",
    "Friday": "7:00 AM &#45; 5:00 PM",
    "Saturday": "10:00 AM &#45; 6:00 PM",
-   "Sunday": "10:00 AM &#45; 6:00 PM"
+   "Sunday": "10:00 AM &#45; 6:00 PM",
+   "logoLocation": "locationLogos/Starbucks.png"
  },
  {
    "_id": "Subway",
@@ -387,7 +425,8 @@
    "Thursday": "8:00 AM &#45; 10:30 PM",
    "Friday": "8:00 AM &#45; 10:30 PM",
    "Saturday": "8:00 AM &#45; 10:30 PM",
-   "Sunday": "8:00 AM &#45; 10:30 PM"
+   "Sunday": "8:00 AM &#45; 10:30 PM",
+   "logoLocation": "locationLogos/Subway.png"
  },
  {
    "_id": "Wendy&#39s",
@@ -397,7 +436,8 @@
    "Thursday": "10:30 AM &#45; 8:00 PM",
    "Friday": "10:30 AM &#45; 8:00 PM",
    "Saturday": "11:00 AM &#45; 8:00 PM",
-   "Sunday": "11:00 AM &#45; 8:00 PM"
+   "Sunday": "11:00 AM &#45; 8:00 PM",
+   "logoLocation": "locationLogos/Wendys.png"
  },
  {
    "_id": "Wing Zone @ Orange & Brew",
@@ -407,6 +447,7 @@
    "Thursday": "11:00 AM &#45; 10:00 PM",
    "Friday": "11:00 AM &#45; MIDNIGHT",
    "Saturday": "CLOSED",
-   "Sunday": "CLOSED"
+   "Sunday": "CLOSED",
+   "logoLocation": "locationLogos/WingZone.png"
  }
 ]
