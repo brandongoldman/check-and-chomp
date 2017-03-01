@@ -1,23 +1,18 @@
 var myLatLng;
 
-function initMilesAway(myLatLng){
-  console.log('initializing miles away'); 
-
-  //would need to traverse the table list to get the distance for each set of points. 
-  //In this case, I will just test it with one set right now. 
-
-  var point1 = {lat:29.647109, lng:-82.341467};
-  console.log(myLatLng);
+function initMilesAway(locationLat, locationLong, index){
+  //point is should be the dining location coordinates
+  var point1 = {lat:locationLat, lng:locationLong};
   var distance = getDistance(myLatLng, point1); 
-  console.log(distance); 
-  document.getElementById('theMiles').innerHTML = distance + ' miles'; 
-
+  document.getElementById('theMiles' + index).innerHTML = distance + ' miles'; 
+  return distance; 
 }
 
 var rad = function(x) {
   return x * Math.PI / 180;
 };
 
+//function to get the distance between user and location 
 var getDistance = function(p1, p2) {
   var R = 6378137; // Earth’s mean radius in meter
   var dLat = rad(p2.lat - p1.lat);
@@ -32,10 +27,10 @@ var getDistance = function(p1, p2) {
   return d;  // returns the distance in miles
 };
 
+//when the page loads, ask for user permission for using location
 function onPageLoad(){
     if (navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(sendLocation);
-      
+      navigator.geolocation.getCurrentPosition(sendLocation); 
     } else {
     alert("Geolocation is not supported by this browser.");
     }
@@ -49,12 +44,12 @@ function myMap(){
 }
 
 function sendLocation(position){
-  var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
-  initMilesAway(myLatLng);
+  myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
+  loadTheTable(); 
 }
 
 function initMap(theLat, theLong, index) {
-  // Try HTML5 geolocation.
+  //blue circle is for user's location
   var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
   var bounds = new google.maps.LatLngBounds(); 
   if (navigator.geolocation) {
@@ -63,27 +58,31 @@ function initMap(theLat, theLong, index) {
       	lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      console.log('myLatLng is:');
-      console.log(myLatLng);
-
       
+      //initialize the map
       var map = new google.maps.Map(document.getElementById('map' + index), {
     		zoom: 14,
     		center: myLatLng
   	  });
   	
+      //add a marker for the user's location 
       var marker1 = new google.maps.Marker({
         position: myLatLng,
         map: map,
         title: 'My Location', 
         icon: im
       });
+
       bounds.extend(marker1.position);
+
+      //add a marker for the dining location
       var location = {lat: theLat, lng: theLong};
       var marker2 = new google.maps.Marker({
         position: location,
         map: map
       });
+
+      //fit the map to show both user location and dining location
       bounds.extend(marker2.position); 
       map.fitBounds(bounds); 
      
@@ -104,24 +103,38 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     'Error: Your browser doesn\'t support geolocation.');
 }
 
-$.getJSON("regularHours.json", function(data) {
-  console.log(data);
-  var index = 0;
-  $.each(data, function (key, val) {
-    console.log(val._id);
-    var content1 = "<tr class=\"tableRows\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\"><p class=\"miles\" id=\"theMiles\">0.8 miles</p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\">Open till 7pm</h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoad" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";    
-    $("#dynamicRowLoad").append(content1);
-    var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
-    $("#dynamicHoursLoad" + index).html(content2);
-    console.log(content2);
-    ++index;
+function loadTheTable(){
+  $.getJSON("regularHours.json", function(data) {
+    var index = 0;
+    $.each(data, function (key, val) {
+      console.log(val._id);
+      var content1 = "<tr class=\"tableRows\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\">Open till 7pm</h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoad" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";    
+      $("#dynamicRowLoad").append(content1);
+      var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
+      $("#dynamicHoursLoad" + index).html(content2);
+      //pass the coordinates to the function that calculates how far the user is from the location
+      theDistance = initMilesAway(val.theLat, val.theLong, index); 
+      ++index;
+    });
   });
-});
+}
+
 
 $('#dynamicRowLoad').on('click', '.tableRows', function() {
- $(this).closest('tr').next('.expandedInformation').toggle();
- console.log($(this).closest('tr').next('.expandedInformation'));
- initMap(29.647109, -82.341467, 1); 
+  $(this).closest('tr').next('.expandedInformation').toggle();
+  theId = $(this)[0].cells[0].id;
+
+  //load the map when the user clicks on the row. This saves a lot of time instead of loading them all on page load
+  //loop through json to get the coordinates and pass them to the initMap function
+  $.getJSON("regularHours.json", function(data) {
+    var index = 0; 
+    $.each(data, function (key, val) {
+      if(theId === val._id){
+        initMap(val.theLat, val.theLong, index);
+      }
+      ++index; 
+    });
+  });
 });
 
 //source: https://developers.google.com/maps/documentation/javascript/examples/marker-simple
