@@ -61,6 +61,7 @@
 .openTill{
 	text-align: center;
 	padding-top: 10; 
+  color: green;
 }
 .locationPreview{
 	display: block;
@@ -272,3 +273,9 @@ tr.tableRows:hover {
         font-size: 150px;
     }
   }
+
+.grayout {
+  background-color: (192,192,192);
+  opacity: 0.6; /* Real browsers */
+  filter: alpha(opacity = 60); /* MSIE */
+}

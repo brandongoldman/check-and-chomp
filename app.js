@@ -107,9 +107,12 @@ function loadTheTable(){
   $.getJSON("regularHours.json", function(data) {
     var index = 0;
     $.each(data, function (key, val) {
-      var content1 = "<tr class=\"tableRows\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoad" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";  
-      $("#dynamicRowLoad").append(content1);  
+      var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoad" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";  
+      $("#dynamicRowLoad").append(content1);
+
+      //get information about whether the location is closed or open and the 'open till' description if location is open  
       getDateTimeInfo(); 
+      var closed = false; 
       var dateString; 
       switch(day){
         case 0: dateString = val.Sunday; break;
@@ -120,9 +123,9 @@ function loadTheTable(){
         case 5: dateString = val.Friday; break;
         case 6: dateString = val.Saturday; break;
       }
-      console.log(dateString);
       if(dateString === "CLOSED"){
-        document.getElementById('openTill' + index).innerHTML = "Closed";
+        document.getElementById('openTill' + index).innerHTML = "Closed now";
+        closed = true; 
         //add code here to make the listing greyed out/disabled
       }
       else if(dateString === "24 HOURS"){
@@ -149,56 +152,68 @@ function loadTheTable(){
         locOpenHr = getOpen[0];
         locOpenMin = getOpen[1];
         if(amPm == "PM" && locClosAmPm == "AM"){
-          document.getElementById('openTill' + index).innerHTML = 'Open till ' + displayLocClosing;
+          document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
         }
         else if(amPm == "PM" && locClosAmPm == "PM"){
           if(theHours < locClosHr){
-            document.getElementById('openTill' + index).innerHTML = 'Open till ' + displayLocClosing;
+            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
           }
           else if(theHours == locClosHr){
             if(minutes < locClosMin){
-              document.getElementById('openTill' + index).innerHTML = 'Open till ' + displayLocClosing;
+              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
             }
             else{
-              document.getElementById('openTill' + index).innerHTML = "Closed";
+              document.getElementById('openTill' + index).innerHTML = "Closed now";
+              closed = true;
             }
           }
           else{
-            document.getElementById('openTill' + index).innerHTML = "Closed";
+            document.getElementById('openTill' + index).innerHTML = "Closed now";
+            closed = true;
           }
         }
         else if(amPm == "AM" && locClosAmPm == "AM"){
           if(theHours < locClosHr){
-            document.getElementById('openTill' + index).innerHTML = 'Open till ' + displayLocClosing;
+            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
           }
           else if(theHours == locClosHr){
             if(minutes < locClosMin){
-              document.getElementById('openTill' + index).innerHTML = 'Open till ' + displayLocClosing;
+              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
             }
             else{
-              document.getElementById('openTill' + index).innerHTML = "Closed";
+              document.getElementById('openTill' + index).innerHTML = "Closed now";
+              closed = true;
             }
           }
           else{
-            document.getElementById('openTill' + index).innerHTML = "Closed";
+            document.getElementById('openTill' + index).innerHTML = "Closed now";
+            closed = true;
           }
         }
         else if(amPm == "AM" && locClosAmPm == "PM"){
           if(theHours < locOpenHr){
-            document.getElementById('openTill' + index).innerHTML = "Closed";
+            document.getElementById('openTill' + index).innerHTML = "Closed now";
+            closed = true;
           }
           else if(theHours == locOpenHr){
             if(locOpenMin > minutes){
-              document.getElementById('openTill' + index).innerHTML = "Closed";
+              document.getElementById('openTill' + index).innerHTML = "Closed now";
+              closed = true;
             }
             else{
-              document.getElementById('openTill' + index).innerHTML = 'Open till ' + displayLocClosing;
+              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
             }
           }
           else{
-            document.getElementById('openTill' + index).innerHTML = 'Open till ' + displayLocClosing;
+            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
           }
         }
+      }
+
+      if(closed === true){
+        document.getElementById('tableRow' + index).style = "background-color: rgba(222,222,222, 0.3); color: rgba(185,185,185, 0.9);";
+        document.getElementById('openTill' + index).style = "color: red;";
+        document.getElementById('theLogo' + index).style = "opacity: 0.4;";
       }
 
       
@@ -210,7 +225,6 @@ function loadTheTable(){
     });
   });
 }
-
 
 $('#dynamicRowLoad').on('click', '.tableRows', function() {
   $(this).closest('tr').next('.expandedInformation').toggle();
