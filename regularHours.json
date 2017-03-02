@@ -306,7 +306,7 @@
    "Thursday": "7:00 AM &#45; 2:00 PM",
    "Friday": "7:00 AM &#45; 2:00 PM",
    "Saturday": "CLOSED",
-   "SunPanda": "CLOSED",
+   "Sunday": "CLOSED",
    "logoLocation": "locationLogos/EinsteinBros.png",
    "theLat" : 29.640313,
    "theLong": -82.344791
@@ -352,11 +352,11 @@
  },
  {
    "_id": "SWRC Freshens",
-   "Monday": "NOON &#45; 10:30 PM",
-   "Tuesday": "NOON &#45; 10:30 PM",
-   "Wednesday": "NOON &#45; 10:30 PM",
-   "Thursday": "NOON &#45; 10:30 PM",
-   "Friday": "NOON &#45; 10:30 PM",
+   "Monday": "12:00 PM &#45; 10:30 PM",
+   "Tuesday": "12:00 PM &#45; 10:30 PM",
+   "Wednesday": "12:00 PM &#45; 10:30 PM",
+   "Thursday": "12:00 PM &#45; 10:30 PM",
+   "Friday": "12:00 PM &#45; 10:30 PM",
    "Saturday": "CLOSED",
    "Sunday": "CLOSED",
    "logoLocation": "locationLogos/Freshens.png",
@@ -371,7 +371,7 @@
    "Thursday": "9:00 AM &#45; 5:00 PM",
    "Friday": "9:00 AM &#45; 4:00 PM",
    "Saturday": "CLOSED",
-   "Sun": "CLOSED",
+   "Sunday": "CLOSED",
    "logoLocation": "locationLogos/JambaJuice.png",
    "theLat" : 29.648759,
    "theLong": -82.344547
@@ -400,7 +400,7 @@
    "Sunday": "CLOSED",
    "logoLocation": "locationLogos/EinsteinBros.png",
    "theLat" : 29.633221,
-   "theLong": 82.350178
+   "theLong": -82.350178
  },
  {
    "_id": "Arredondo Café",
@@ -436,7 +436,7 @@
    "Thursday": "9:00 AM &#45; 10:30 PM",
    "Friday": "9:00 AM &#45; 10:30 PM",
    "Saturday": "11:00 AM &#45; 8:00 PM",
-   "Sunday": "NOON &#45; 8:00 PM",
+   "Sunday": "12:00 PM &#45; 8:00 PM",
    "logoLocation": "locationLogos/ReitzPod_Freshens.png",
    "theLat" : 29.646501,
    "theLong": -82.347955
@@ -525,7 +525,7 @@
    "Tuesday": "11:00 AM &#45; 10:00 PM",
    "Wednesday": "11:00 AM &#45; 10:00 PM",
    "Thursday": "11:00 AM &#45; 10:00 PM",
-   "Friday": "11:00 AM &#45; MIDNIGHT",
+   "Friday": "11:00 AM &#45; 12:00 AM",
    "Saturday": "CLOSED",
    "Sunday": "CLOSED",
    "logoLocation": "locationLogos/WingZone.png",
