@@ -109,7 +109,7 @@ function loadTheTable(){
     $.each(data, function (key, val) {
       var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoad" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";  
       $("#dynamicRowLoad").append(content1);
-
+      console.log('------' + val._id + '------'); 
       //get information about whether the location is closed or open and the 'open till' description if location is open  
       getDateTimeInfo(); 
       var closed = false; 
@@ -132,8 +132,7 @@ function loadTheTable(){
         document.getElementById('openTill' + index).innerHTML = "24 Hours";
       }
       else{
-        //need to further parse the dateString
-        var locClosAmPm; 
+        //need to further parse the dateString; 
         var displayLocClosing;
         var locClosHr; 
         var locClosMin; 
@@ -142,71 +141,162 @@ function loadTheTable(){
         var splitForTime = dateString.split("&#45; ");
         displayLocClosing = splitForTime[1];
         var splitStringArray = dateString.split(" ");
+        console.log(splitStringArray);
         locClosAmPm = splitStringArray[4];
         locClosHr = splitStringArray[3];
         var getHour = locClosHr.split(":");
         locClosHr = getHour[0];
         locClosMin = getHour[1];
+        locClosMin = parseInt(locClosMin); 
         locOpenHr = splitStringArray[0];
         var getOpen = locOpenHr.split(":");
-        locOpenHr = getOpen[0];
+        console.log(getOpen); 
+        theLocOpenHr = getOpen[0];
+        theLocOpenHr = parseInt(theLocOpenHr); 
         locOpenMin = getOpen[1];
-        if(amPm == "PM" && locClosAmPm == "AM"){
+        var theLocClosHr; 
+        console.log('locClosHr: ' + locClosHr); 
+        switch(locClosHr){
+          case '1': 
+            if(locClosAmPm === 'AM')
+              duration = 
+              theLocClosHr = 1; 
+            else
+              theLocClosHr = 13; 
+            break; 
+          case '2': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 2; 
+            else
+              theLocClosHr = 14; 
+            break;
+          case '3': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 3; 
+            else
+              theLocClosHr = 15; 
+            break;
+          case '4': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 4; 
+            else
+              theLocClosHr = 16; 
+            break;
+          case '5': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 5; 
+            else
+              theLocClosHr = 17; 
+            break;
+          case '6': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 6; 
+            else
+              theLocClosHr = 18; 
+            break;
+          case '7': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 7; 
+            else
+              theLocClosHr = 19; 
+            break;
+          case '8': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 8; 
+            else
+              theLocClosHr = 20; 
+            break;
+          case '9': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 9; 
+            else
+              theLocClosHr = 21; 
+            break;
+          case '10': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 10; 
+            else
+              theLocClosHr = 22; 
+            break;
+          case '11': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 11; 
+            else
+              theLocClosHr = 23; 
+            break;
+          case '12': 
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 0; 
+            else
+              theLocClosHr = 12; 
+            break;
+        }
+        console.log(typeof theLocClosHr);
+        console.log('theLocClosHr: ' + theLocClosHr); 
+        console.log(typeof theLocOpenHr); 
+        console.log('theLocOpenHr: ' + theLocOpenHr); 
+        console.log('locClosAmPm: ' + locClosAmPm); 
+        locOpenMin = parseInt(locOpenMin); 
+        theMinutes = parseInt(theMinutes); 
+        console.log(typeof locOpenMin); 
+        console.log(typeof theMinutes); 
+        console.log('locOpenMin: ' + locOpenMin); 
+        if(theHours == theLocOpenHr){
+          if(theMinutes < locOpenMin){
+            console.log('**one'); 
+            document.getElementById('openTill' + index).innerHTML = "Closed now";
+            closed = true;
+          }
+          else{
+            console.log('**two'); 
+            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+          }
+        }
+        else if(theHours < theLocOpenHr && locClosAmPm === 'AM'){
+          if(theHours < theLocClosHr){
+            console.log('**three'); 
+            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+          }
+          else if(theHours == theLocClosHr){
+            if(theMinutes < locClosMin){
+              console.log('**four'); 
+              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+            }
+            else{
+              console.log('**five'); 
+              document.getElementById('openTill' + index).innerHTML = "Closed now";
+              closed = true;
+            }
+          }
+          else{
+            console.log('**six'); 
+            document.getElementById('openTill' + index).innerHTML = "Closed now";
+            closed = true;
+          }
+        }
+        else if(theLocOpenHr < theHours && theHours < theLocClosHr){
+          console.log('**seven'); 
           document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
         }
-        else if(amPm == "PM" && locClosAmPm == "PM"){
-          if(theHours < locClosHr){
+        else if(theLocOpenHr < theHours && theHours == theLocClosHr){
+          if(theMinutes < locClosMin){
+            console.log('**eight'); 
             document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
           }
-          else if(theHours == locClosHr){
-            if(minutes < locClosMin){
-              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
-            }
-            else{
-              document.getElementById('openTill' + index).innerHTML = "Closed now";
-              closed = true;
-            }
-          }
           else{
+            console.log('**nine'); 
             document.getElementById('openTill' + index).innerHTML = "Closed now";
             closed = true;
           }
         }
-        else if(amPm == "AM" && locClosAmPm == "AM"){
-          if(theHours < locClosHr){
-            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
-          }
-          else if(theHours == locClosHr){
-            if(minutes < locClosMin){
-              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
-            }
-            else{
-              document.getElementById('openTill' + index).innerHTML = "Closed now";
-              closed = true;
-            }
-          }
-          else{
-            document.getElementById('openTill' + index).innerHTML = "Closed now";
-            closed = true;
-          }
+        else if(theHours > theLocClosHr && locClosAmPm === 'AM'){
+          console.log('**ten');
+          document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
         }
-        else if(amPm == "AM" && locClosAmPm == "PM"){
-          if(theHours < locOpenHr){
-            document.getElementById('openTill' + index).innerHTML = "Closed now";
-            closed = true;
-          }
-          else if(theHours == locOpenHr){
-            if(locOpenMin > minutes){
-              document.getElementById('openTill' + index).innerHTML = "Closed now";
-              closed = true;
-            }
-            else{
-              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
-            }
-          }
-          else{
-            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
-          }
+        else{
+          console.log('**eleven'); 
+          document.getElementById('openTill' + index).innerHTML = "Closed now";
+          closed = true;
         }
       }
 
@@ -246,34 +336,20 @@ $('#dynamicRowLoad').on('click', '.tableRows', function() {
 var day; 
 var amPm; 
 var theHours; 
-var minutes; 
+var theMinutes; 
 
 function getDateTimeInfo(){
   var currentDate = new Date(); 
   day = currentDate.getDay();
-  var hours = currentDate.getHours();
-  if(hours < 12){
-    amPm = "AM";
-  } 
-  else{
-    amPm = "PM"
-  }
-  switch(hours){
-    case 0: theHours = 12; break; 
-    case 13: theHours = 1; break; 
-    case 14: theHours = 2; break; 
-    case 15: theHours = 3; break; 
-    case 16: theHours = 4; break; 
-    case 17: theHours = 5; break; 
-    case 18: theHours = 6; break; 
-    case 19: theHours = 7; break; 
-    case 20: theHours = 8; break; 
-    case 21: theHours = 9; break; 
-    case 22: theHours = 10; break; 
-    case 23: theHours = 11; break; 
-    theHours = hours; 
-  }
+  theHours = currentDate.getHours();
   minutes = currentDate.getMinutes(); 
+  //day = 3; 
+  //theHours = 4; 
+  //theMinutes = 27; 
+  console.log('day is : ' + day); 
+  console.log('theHours is : ' + theHours);
+  console.log('theMinutes is : ' + minutes);
+
 }
 
 
