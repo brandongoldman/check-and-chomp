@@ -141,7 +141,7 @@ function loadTheTable(){
         var splitForTime = dateString.split("&#45; ");
         displayLocClosing = splitForTime[1];
         var splitStringArray = dateString.split(" ");
-        console.log(splitStringArray);
+        //console.log(splitStringArray);
         locClosAmPm = splitStringArray[4];
         locClosHr = splitStringArray[3];
         var getHour = locClosHr.split(":");
@@ -150,12 +150,12 @@ function loadTheTable(){
         locClosMin = parseInt(locClosMin); 
         locOpenHr = splitStringArray[0];
         var getOpen = locOpenHr.split(":");
-        console.log(getOpen); 
+        //console.log(getOpen); 
         theLocOpenHr = getOpen[0];
         theLocOpenHr = parseInt(theLocOpenHr); 
         locOpenMin = getOpen[1];
         var theLocClosHr; 
-        console.log('locClosHr: ' + locClosHr); 
+        //console.log('locClosHr: ' + locClosHr); 
         switch(locClosHr){
           case '1': 
             if(locClosAmPm === 'AM')
@@ -231,70 +231,70 @@ function loadTheTable(){
               theLocClosHr = 12; 
             break;
         }
-        console.log(typeof theLocClosHr);
+        /*console.log(typeof theLocClosHr);
         console.log('theLocClosHr: ' + theLocClosHr); 
         console.log(typeof theLocOpenHr); 
         console.log('theLocOpenHr: ' + theLocOpenHr); 
-        console.log('locClosAmPm: ' + locClosAmPm); 
+        console.log('locClosAmPm: ' + locClosAmPm); */
         locOpenMin = parseInt(locOpenMin); 
         theMinutes = parseInt(theMinutes); 
-        console.log(typeof locOpenMin); 
+        /*console.log(typeof locOpenMin); 
         console.log(typeof theMinutes); 
-        console.log('locOpenMin: ' + locOpenMin); 
+        console.log('locOpenMin: ' + locOpenMin); */
         if(theHours == theLocOpenHr){
           if(theMinutes < locOpenMin){
-            console.log('**one'); 
+            //console.log('**one'); 
             document.getElementById('openTill' + index).innerHTML = "Closed now";
             closed = true;
           }
           else{
-            console.log('**two'); 
+            //console.log('**two'); 
             document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
           }
         }
         else if(theHours < theLocOpenHr && locClosAmPm === 'AM'){
           if(theHours < theLocClosHr){
-            console.log('**three'); 
+            //console.log('**three'); 
             document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
           }
           else if(theHours == theLocClosHr){
             if(theMinutes < locClosMin){
-              console.log('**four'); 
+              //console.log('**four'); 
               document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
             }
             else{
-              console.log('**five'); 
+              //console.log('**five'); 
               document.getElementById('openTill' + index).innerHTML = "Closed now";
               closed = true;
             }
           }
           else{
-            console.log('**six'); 
+           // console.log('**six'); 
             document.getElementById('openTill' + index).innerHTML = "Closed now";
             closed = true;
           }
         }
         else if(theLocOpenHr < theHours && theHours < theLocClosHr){
-          console.log('**seven'); 
+          //console.log('**seven'); 
           document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
         }
         else if(theLocOpenHr < theHours && theHours == theLocClosHr){
           if(theMinutes < locClosMin){
-            console.log('**eight'); 
+            //console.log('**eight'); 
             document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
           }
           else{
-            console.log('**nine'); 
+            //console.log('**nine'); 
             document.getElementById('openTill' + index).innerHTML = "Closed now";
             closed = true;
           }
         }
         else if(theHours > theLocClosHr && locClosAmPm === 'AM'){
-          console.log('**ten');
+          //console.log('**ten');
           document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
         }
         else{
-          console.log('**eleven'); 
+          //console.log('**eleven'); 
           document.getElementById('openTill' + index).innerHTML = "Closed now";
           closed = true;
         }
@@ -344,11 +344,11 @@ function getDateTimeInfo(){
   theHours = currentDate.getHours();
   minutes = currentDate.getMinutes(); 
   //day = 3; 
-  //theHours = 4; 
-  //theMinutes = 27; 
-  console.log('day is : ' + day); 
+  //theHours = 24; 
+  //theMinutes = 0; 
+  /*console.log('day is : ' + day); 
   console.log('theHours is : ' + theHours);
-  console.log('theMinutes is : ' + minutes);
+  console.log('theMinutes is : ' + theMinutes);*/
 
 }
 
