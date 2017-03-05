@@ -428,6 +428,37 @@ $("#search").on("keyup", function() {
 });
 
 
+// Search Function
+function search() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table1 = document.getElementById("openTable");
+  tr = table1.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }      
+  /* //TODO
+  table2 = document.getElementById("closedTable");
+  tr2 = table2.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td2 = tr2[i].getElementsByTagName("td")[0];
+    if (td2) {
+      if (td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr2[i].style.display = "";
+      } else {
+        tr2[i].style.display = "none";
+      }
+    }       
+  } */
+}
+
 //source: https://developers.google.com/maps/documentation/javascript/examples/marker-simple
 //source: https://developers.google.com/maps/documentation/javascript/geolocation
 //source: http://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3
