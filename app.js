@@ -407,7 +407,7 @@ function getDateTimeInfo(){
 
 }
 
-/*$("#search").on("keyup", function() {
+$("#search").on("keyup", function() {
     var value = $(this).val();
 
     $("table tr").each(function(index) {
@@ -425,7 +425,7 @@ function getDateTimeInfo(){
             }
         }
     });
-});*/
+});
 
 
 // Search Function
