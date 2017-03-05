@@ -107,11 +107,10 @@ function loadTheTable(){
   $.getJSON("regularHours.json", function(data) {
     var index = 0;
     $.each(data, function (key, val) {
-      var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoad" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";  
-      $("#dynamicRowLoad").append(content1);
       console.log('------' + val._id + '------'); 
       //get information about whether the location is closed or open and the 'open till' description if location is open  
       getDateTimeInfo(); 
+      var locationStatus; //0=closed, 1=open, 2=24hours
       var closed = false; 
       var dateString; 
       switch(day){
@@ -124,12 +123,11 @@ function loadTheTable(){
         case 6: dateString = val.Saturday; break;
       }
       if(dateString === "CLOSED"){
-        document.getElementById('openTill' + index).innerHTML = "Closed now";
-        closed = true; 
-        //add code here to make the listing greyed out/disabled
+        //closed = true; 
+        status = 0;
       }
       else if(dateString === "24 HOURS"){
-        document.getElementById('openTill' + index).innerHTML = "24 Hours";
+        status = 2;
       }
       else{
         //need to further parse the dateString; 
@@ -141,7 +139,7 @@ function loadTheTable(){
         var splitForTime = dateString.split("&#45; ");
         displayLocClosing = splitForTime[1];
         var splitStringArray = dateString.split(" ");
-        console.log(splitStringArray);
+        //console.log(splitStringArray);
         locClosAmPm = splitStringArray[4];
         locClosHr = splitStringArray[3];
         var getHour = locClosHr.split(":");
@@ -150,12 +148,12 @@ function loadTheTable(){
         locClosMin = parseInt(locClosMin); 
         locOpenHr = splitStringArray[0];
         var getOpen = locOpenHr.split(":");
-        console.log(getOpen); 
+        //console.log(getOpen); 
         theLocOpenHr = getOpen[0];
         theLocOpenHr = parseInt(theLocOpenHr); 
         locOpenMin = getOpen[1];
         var theLocClosHr; 
-        console.log('locClosHr: ' + locClosHr); 
+        //console.log('locClosHr: ' + locClosHr); 
         switch(locClosHr){
           case '1': 
             if(locClosAmPm === 'AM')
@@ -231,92 +229,149 @@ function loadTheTable(){
               theLocClosHr = 12; 
             break;
         }
-        console.log(typeof theLocClosHr);
+        /*console.log(typeof theLocClosHr);
         console.log('theLocClosHr: ' + theLocClosHr); 
         console.log(typeof theLocOpenHr); 
         console.log('theLocOpenHr: ' + theLocOpenHr); 
-        console.log('locClosAmPm: ' + locClosAmPm); 
+        console.log('locClosAmPm: ' + locClosAmPm); */
         locOpenMin = parseInt(locOpenMin); 
         theMinutes = parseInt(theMinutes); 
-        console.log(typeof locOpenMin); 
+        /*console.log(typeof locOpenMin); 
         console.log(typeof theMinutes); 
-        console.log('locOpenMin: ' + locOpenMin); 
+        console.log('locOpenMin: ' + locOpenMin); */
         if(theHours == theLocOpenHr){
           if(theMinutes < locOpenMin){
-            console.log('**one'); 
-            document.getElementById('openTill' + index).innerHTML = "Closed now";
-            closed = true;
+            status = 0; 
           }
           else{
-            console.log('**two'); 
-            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+            status = 1;
           }
         }
         else if(theHours < theLocOpenHr && locClosAmPm === 'AM'){
           if(theHours < theLocClosHr){
-            console.log('**three'); 
-            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+            status = 1;
           }
           else if(theHours == theLocClosHr){
             if(theMinutes < locClosMin){
-              console.log('**four'); 
-              document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+              status = 1;
             }
             else{
-              console.log('**five'); 
-              document.getElementById('openTill' + index).innerHTML = "Closed now";
-              closed = true;
+              status = 0;
             }
           }
           else{
-            console.log('**six'); 
-            document.getElementById('openTill' + index).innerHTML = "Closed now";
-            closed = true;
+            status = 0;
           }
         }
         else if(theLocOpenHr < theHours && theHours < theLocClosHr){
-          console.log('**seven'); 
-          document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+          status = 1;
         }
         else if(theLocOpenHr < theHours && theHours == theLocClosHr){
           if(theMinutes < locClosMin){
-            console.log('**eight'); 
-            document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+            status = 1;
           }
           else{
-            console.log('**nine'); 
-            document.getElementById('openTill' + index).innerHTML = "Closed now";
-            closed = true;
+            status = 0;
           }
         }
         else if(theHours > theLocClosHr && locClosAmPm === 'AM'){
-          console.log('**ten');
-          document.getElementById('openTill' + index).innerHTML = 'Open until ' + displayLocClosing;
+          status = 1;
         }
         else{
-          console.log('**eleven'); 
-          document.getElementById('openTill' + index).innerHTML = "Closed now";
-          closed = true;
+          status = 0;
         }
       }
 
-      if(closed === true){
-        document.getElementById('tableRow' + index).style = "background-color: rgba(222,222,222, 0.3); color: rgba(185,185,185, 0.9);";
-        document.getElementById('openTill' + index).style = "color: red;";
-        document.getElementById('theLogo' + index).style = "opacity: 0.4;";
-      }
+      //console.log(val._id); 
+      //console.log(status);
 
-      
-      var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
-      $("#dynamicHoursLoad" + index).html(content2);
-      //pass the coordinates to the function that calculates how far the user is from the location
-      theDistance = initMilesAway(val.theLat, val.theLong, index); 
-      ++index;
+      //the loaciton is closed
+      if(status == 0){
+        var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoadClosed" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";  
+        $("#dynamicRowLoadClosed").append(content1);
+          document.getElementById('openTill' + index).innerHTML = "Closed now";
+          document.getElementById('tableRow' + index).style = "background-color: rgba(222,222,222, 0.3); color: rgba(185,185,185, 0.9);";
+          document.getElementById('openTill' + index).style = "color: red;";
+          document.getElementById('theLogo' + index).style = "opacity: 0.4;";
+          var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
+          $("#dynamicHoursLoadClosed" + index).html(content2);
+          //pass the coordinates to the function that calculates how far the user is from the location
+          theDistance = initMilesAway(val.theLat, val.theLong, index); 
+          ++index;
+      }
+      //the location is open
+      else if(status == 1){ 
+        var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoadOpen" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";  
+        $("#dynamicRowLoadOpen").append(content1);
+        document.getElementById('openTill' + index).innerHTML = displayLocClosing;
+        document.getElementById('openTill' + index).style = "color: green;";
+          var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
+          $("#dynamicHoursLoadOpen" + index).html(content2);
+          //pass the coordinates to the function that calculates how far the user is from the location
+          theDistance = initMilesAway(val.theLat, val.theLong, index); 
+          ++index;
+        }
+      //the location is 24 hours 
+      else{
+        var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoadOpen" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";  
+        $("#dynamicRowLoadOpen").append(content1);
+        document.getElementById('openTill' + index).innerHTML = "24 Hours";
+        document.getElementById('openTill' + index).style = "color: green;";
+          var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
+          $("#dynamicHoursLoadOpen" + index).html(content2);
+          //pass the coordinates to the function that calculates how far the user is from the location
+          theDistance = initMilesAway(val.theLat, val.theLong, index); 
+          ++index;
+      }      
     });
-  });
+    //sortTheTable();
+  }); 
 }
 
-$('#dynamicRowLoad').on('click', '.tableRows', function() {
+/*function sortTheTable(){
+  console.log('about to sort the table.');
+  var table = $('#openTable').eq(0); 
+  console.log(table); 
+  var rows = table.find('tr:gt(0)').toArray(); 
+  var theRows = table.find('tr:gt(0)').toArray().sort(comparer($('miles').index())); 
+  console.log(rows); 
+  console.log(theRows); 
+    this.asc = !this.asc
+    if (!this.asc){rows = rows.reverse(); }
+    for (var i = 0; i < rows.length; i++){table.append(rows[i]); }
+}
+
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index); 
+        console.log('val a is: '); 
+        console.log(valA); 
+        console.log(a); 
+        console.log('val b is: '); 
+        console.log(valB); 
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB); 
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }*/
+
+$('#dynamicRowLoadOpen').on('click', '.tableRows', function() {
+  $(this).closest('tr').next('.expandedInformation').toggle();
+  theId = $(this)[0].cells[0].id;
+
+  //load the map when the user clicks on the row. This saves a lot of time instead of loading them all on page load
+  //loop through json to get the coordinates and pass them to the initMap function
+  $.getJSON("regularHours.json", function(data) {
+    var index = 0; 
+    $.each(data, function (key, val) {
+      if(theId === val._id){
+        initMap(val.theLat, val.theLong, index);
+      }
+      ++index; 
+    });
+  });
+});
+
+$('#dynamicRowLoadClosed').on('click', '.tableRows', function() {
   $(this).closest('tr').next('.expandedInformation').toggle();
   theId = $(this)[0].cells[0].id;
 
@@ -344,15 +399,37 @@ function getDateTimeInfo(){
   theHours = currentDate.getHours();
   minutes = currentDate.getMinutes(); 
   //day = 3; 
-  //theHours = 4; 
-  //theMinutes = 27; 
-  console.log('day is : ' + day); 
+  //theHours = 24; 
+  //theMinutes = 0; 
+  /*console.log('day is : ' + day); 
   console.log('theHours is : ' + theHours);
-  console.log('theMinutes is : ' + minutes);
+  console.log('theMinutes is : ' + theMinutes);*/
 
 }
+
+$("#search").on("keyup", function() {
+    var value = $(this).val();
+
+    $("table tr").each(function(index) {
+        if (index !== 0) {
+
+            $row = $(this);
+
+            var id = $row.find("td:first").text();
+
+            if (id.indexOf(value) !== 0) {
+                $row.hide();
+            }
+            else {
+                $row.show();
+            }
+        }
+    });
+});
 
 
 //source: https://developers.google.com/maps/documentation/javascript/examples/marker-simple
 //source: https://developers.google.com/maps/documentation/javascript/geolocation
 //source: http://stackoverflow.com/questions/1502590/calculate-distance-between-two-points-in-google-maps-v3
+
+//work in progress source for sorting table: http://jsfiddle.net/Zhd2X/20/
