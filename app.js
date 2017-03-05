@@ -455,8 +455,8 @@ function search() {
       } else {
         tr2[i].style.display = "none";
       }
-    }       
-  } */
+    }  */     
+  } 
 }
 
 //source: https://developers.google.com/maps/documentation/javascript/examples/marker-simple
