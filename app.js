@@ -444,7 +444,7 @@ function search() {
         tr[i].style.display = "none";
       }
     }      
-  /* //TODO
+}
   table2 = document.getElementById("closedTable");
   tr2 = table2.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
@@ -455,9 +455,10 @@ function search() {
       } else {
         tr2[i].style.display = "none";
       }
-    }  */     
-  } 
-}
+    }     
+  }
+
+ }
 
 //source: https://developers.google.com/maps/documentation/javascript/examples/marker-simple
 //source: https://developers.google.com/maps/documentation/javascript/geolocation
