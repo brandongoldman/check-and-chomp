@@ -3,16 +3,16 @@ var myLatLng;
 function initMilesAway(locationLat, locationLong, index){
   //point is should be the dining location coordinates
   var point1 = {lat:locationLat, lng:locationLong};
-  var distance = getDistance(myLatLng, point1); 
-  //document.getElementById('theMiles' + index).innerHTML = distance + ' miles'; 
-  return distance; 
+  var distance = getDistance(myLatLng, point1);
+  //document.getElementById('theMiles' + index).innerHTML = distance + ' miles';
+  return distance;
 }
 
 var rad = function(x) {
   return x * Math.PI / 180;
 };
 
-//function to get the distance between user and location 
+//function to get the distance between user and location
 var getDistance = function(p1, p2) {
   var R = 6378137; // Earth’s mean radius in meter
   var dLat = rad(p2.lat - p1.lat);
@@ -27,49 +27,57 @@ var getDistance = function(p1, p2) {
   return d;  // returns the distance in miles
 };
 
+function refreshQuarterly() {
+  setInterval(function(){
+    var minutes = (new Date()).getMinutes();
+    if ( !minutes%15 ) location.reload(); // if minutes is a multiple of 15
+  }, 60000); //check every minute
+}
+
 //when the page loads, ask for user permission for using location
 function onPageLoad(){
     if (navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(sendLocation); 
+      navigator.geolocation.getCurrentPosition(sendLocation);
     } else {
     alert("Geolocation is not supported by this browser.");
     }
+    refreshQuarterly();
 }
 
 function myMap(){
  /*just leave this blank function here.
- The googlemaps api calls this one automatically on page load. 
- Initially it called initMap, but that was doing things that 
+ The googlemaps api calls this one automatically on page load.
+ Initially it called initMap, but that was doing things that
  I didn't want it to do right away, so we need this blank function here*/
 }
 
 function sendLocation(position){
   myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
-  loadTheTable(); 
+  loadTheTable();
 }
 
 function initMap(theLat, theLong, index) {
   //blue circle is for user's location
   var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
-  var bounds = new google.maps.LatLngBounds(); 
+  var bounds = new google.maps.LatLngBounds();
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var myLatLng = {
       	lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      
+
       //initialize the map
       var map = new google.maps.Map(document.getElementById('map' + index), {
     		zoom: 14,
     		center: myLatLng
   	  });
-  	
-      //add a marker for the user's location 
+
+      //add a marker for the user's location
       var marker1 = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        title: 'My Location', 
+        title: 'My Location',
         icon: im
       });
 
@@ -83,9 +91,9 @@ function initMap(theLat, theLong, index) {
       });
 
       //fit the map to show both user location and dining location
-      bounds.extend(marker2.position); 
-      map.fitBounds(bounds); 
-     
+      bounds.extend(marker2.position);
+      map.fitBounds(bounds);
+
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -105,15 +113,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function loadTheTable(){
   $.getJSON("regularHours.json", function(data) {
-    var locationsArray = []; 
+    var locationsArray = [];
     var index = 0;
     $.each(data, function (key, val) {
-      console.log('------' + val._id + '------'); 
-      //get information about whether the location is closed or open and the 'open till' description if location is open  
-      getDateTimeInfo(); 
+      console.log('------' + val._id + '------');
+      //get information about whether the location is closed or open and the 'open till' description if location is open
+      getDateTimeInfo();
       var locationStatus; //0=closed, 1=open, 2=24hours
-      var closed = false; 
-      var dateString; 
+      var closed = false;
+      var dateString;
       switch(day){
         case 0: dateString = val.Sunday; break;
         case 1: dateString = val.Monday; break;
@@ -124,19 +132,19 @@ function loadTheTable(){
         case 6: dateString = val.Saturday; break;
       }
       if(dateString === "CLOSED"){
-        //closed = true; 
+        //closed = true;
         status = 0;
       }
       else if(dateString === "24 HOURS"){
         status = 2;
       }
       else{
-        //need to further parse the dateString; 
+        //need to further parse the dateString;
         var displayLocClosing;
-        var locClosHr; 
-        var locClosMin; 
+        var locClosHr;
+        var locClosMin;
         var locOpenHr;
-        var locOpenMin; 
+        var locOpenMin;
         var splitForTime = dateString.split("&#45; ");
         displayLocClosing = splitForTime[1];
         var splitStringArray = dateString.split(" ");
@@ -146,103 +154,103 @@ function loadTheTable(){
         var getHour = locClosHr.split(":");
         locClosHr = getHour[0];
         locClosMin = getHour[1];
-        locClosMin = parseInt(locClosMin); 
+        locClosMin = parseInt(locClosMin);
         locOpenHr = splitStringArray[0];
         var getOpen = locOpenHr.split(":");
-        //console.log(getOpen); 
+        //console.log(getOpen);
         theLocOpenHr = getOpen[0];
-        theLocOpenHr = parseInt(theLocOpenHr); 
+        theLocOpenHr = parseInt(theLocOpenHr);
         locOpenMin = getOpen[1];
-        var theLocClosHr; 
-        //console.log('locClosHr: ' + locClosHr); 
+        var theLocClosHr;
+        //console.log('locClosHr: ' + locClosHr);
         switch(locClosHr){
-          case '1': 
+          case '1':
             if(locClosAmPm === 'AM')
-              duration = 
-              theLocClosHr = 1; 
+              duration =
+              theLocClosHr = 1;
             else
-              theLocClosHr = 13; 
-            break; 
-          case '2': 
-            if(locClosAmPm === 'AM')
-              theLocClosHr = 2; 
-            else
-              theLocClosHr = 14; 
+              theLocClosHr = 13;
             break;
-          case '3': 
+          case '2':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 3; 
+              theLocClosHr = 2;
             else
-              theLocClosHr = 15; 
+              theLocClosHr = 14;
             break;
-          case '4': 
+          case '3':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 4; 
+              theLocClosHr = 3;
             else
-              theLocClosHr = 16; 
+              theLocClosHr = 15;
             break;
-          case '5': 
+          case '4':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 5; 
+              theLocClosHr = 4;
             else
-              theLocClosHr = 17; 
+              theLocClosHr = 16;
             break;
-          case '6': 
+          case '5':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 6; 
+              theLocClosHr = 5;
             else
-              theLocClosHr = 18; 
+              theLocClosHr = 17;
             break;
-          case '7': 
+          case '6':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 7; 
+              theLocClosHr = 6;
             else
-              theLocClosHr = 19; 
+              theLocClosHr = 18;
             break;
-          case '8': 
+          case '7':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 8; 
+              theLocClosHr = 7;
             else
-              theLocClosHr = 20; 
+              theLocClosHr = 19;
             break;
-          case '9': 
+          case '8':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 9; 
+              theLocClosHr = 8;
             else
-              theLocClosHr = 21; 
+              theLocClosHr = 20;
             break;
-          case '10': 
+          case '9':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 10; 
+              theLocClosHr = 9;
             else
-              theLocClosHr = 22; 
+              theLocClosHr = 21;
             break;
-          case '11': 
+          case '10':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 11; 
+              theLocClosHr = 10;
             else
-              theLocClosHr = 23; 
+              theLocClosHr = 22;
             break;
-          case '12': 
+          case '11':
             if(locClosAmPm === 'AM')
-              theLocClosHr = 0; 
+              theLocClosHr = 11;
             else
-              theLocClosHr = 12; 
+              theLocClosHr = 23;
+            break;
+          case '12':
+            if(locClosAmPm === 'AM')
+              theLocClosHr = 0;
+            else
+              theLocClosHr = 12;
             break;
         }
         /*console.log(typeof theLocClosHr);
-        console.log('theLocClosHr: ' + theLocClosHr); 
-        console.log(typeof theLocOpenHr); 
-        console.log('theLocOpenHr: ' + theLocOpenHr); 
+        console.log('theLocClosHr: ' + theLocClosHr);
+        console.log(typeof theLocOpenHr);
+        console.log('theLocOpenHr: ' + theLocOpenHr);
         console.log('locClosAmPm: ' + locClosAmPm); */
-        locOpenMin = parseInt(locOpenMin); 
-        theMinutes = parseInt(theMinutes); 
-        /*console.log(typeof locOpenMin); 
-        console.log(typeof theMinutes); 
+        locOpenMin = parseInt(locOpenMin);
+        theMinutes = parseInt(theMinutes);
+        /*console.log(typeof locOpenMin);
+        console.log(typeof theMinutes);
         console.log('locOpenMin: ' + locOpenMin); */
         if(theHours == theLocOpenHr){
           if(theMinutes < locOpenMin){
-            status = 0; 
+            status = 0;
           }
           else{
             status = 1;
@@ -283,30 +291,30 @@ function loadTheTable(){
         }
       }
 
-      //console.log(val._id); 
+      //console.log(val._id);
       //console.log(status);
       if(status == 0){
         var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoadClosed" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";
         var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
         theDistance = initMilesAway(val.theLat, val.theLong, index);
-        locationsArray.push([theDistance, status, content1, content2, index, "Closed now"]); 
-        ++index; 
+        locationsArray.push([theDistance, status, content1, content2, index, "Closed now"]);
+        ++index;
       }
       else{
         var content1 = "<tr class=\"tableRows\" id=\"tableRow" + index + "\"> <td class=\"col-md-4\" id=\"" + val._id + "\"><img src=\"" + val.logoLocation + "\" alt=\"" + val._id + " Logo\" class=\"logos\" id=\"theLogo" + index + "\"><p class=\"miles\" id=\"theMiles" + index + "\"></p></td> <td class=\"locationPreview\"> <h3 class=\"locationName\">" + val._id + "</h3> <h4 class=\"openTill\" id=\"openTill" + index + "\"></h4> <center><i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i></center> </td> </tr> <tr class=\"expandedInformation\"> <td class=\"col-md-4 weeklyHours\"> <h5 class=\"hoursHeading\">Weekly Hours</h5><h6 id=\"dynamicHoursLoadOpen" + index + "\"></h6> </td> <td class=\"displayMap\" id=\"map" + index + "\"> </td> </tr>";
         var content2 = "Monday: " + val.Monday + "<br>Tuesday: " + val.Tuesday + "<br>Wednesday: " + val.Wednesday + "<br>Thursday: " + val.Thursday + "<br>Friday: " + val.Friday + "<br>Saturday: " + val.Saturday + "<br>Sunday: " + val.Sunday;
         theDistance = initMilesAway(val.theLat, val.theLong, index);
         if(status == 1)
-          locationsArray.push([theDistance, status, content1, content2, index, displayLocClosing]); 
+          locationsArray.push([theDistance, status, content1, content2, index, displayLocClosing]);
         else
-          locationsArray.push([theDistance, status, content1, content2, index, "24 Hours"]); 
-        ++index; 
-      }   
+          locationsArray.push([theDistance, status, content1, content2, index, "24 Hours"]);
+        ++index;
+      }
     });
 
     var sortedArray = sortTheTable(locationsArray);
     for(var q = 0; q < sortedArray.length; q++){
-      index = sortedArray[q][4]; 
+      index = sortedArray[q][4];
       //location is closed, append to the closed table
       if(sortedArray[q][1] == 0){
         $("#dynamicRowLoadClosed").append(sortedArray[q][2]);
@@ -315,32 +323,32 @@ function loadTheTable(){
         document.getElementById('openTill' + index).style = "color: red;";
         document.getElementById('theLogo' + index).style = "opacity: 0.4;";
         $("#dynamicHoursLoadClosed" + index).html(sortedArray[q][3]);
-        document.getElementById('theMiles' + index).innerHTML = sortedArray[q][0] + ' miles'; 
+        document.getElementById('theMiles' + index).innerHTML = sortedArray[q][0] + ' miles';
       }
       //location is open, append to the open table
       else{
         $("#dynamicRowLoadOpen").append(sortedArray[q][2]);
         $("#dynamicHoursLoadOpen" + index).html(sortedArray[q][3]);
-        document.getElementById('theMiles' + index).innerHTML = sortedArray[q][0] + ' miles'; 
+        document.getElementById('theMiles' + index).innerHTML = sortedArray[q][0] + ' miles';
         document.getElementById('openTill' + index).innerHTML = sortedArray[q][5];
         document.getElementById('openTill' + index).style = "color: green;";
       }
     }
-  }); 
+  });
 }
 
 function sortTheTable(myArray){
-  var length = myArray.length; 
-  console.log(length); 
-  var value, i, j; 
+  var length = myArray.length;
+  console.log(length);
+  var value, i, j;
   for(i = 0; i < length; i++){
-    value = myArray[i]; 
+    value = myArray[i];
     for(j=i-1; j > -1 && myArray[j][0] > value; j--){
-      myArray[j+1] = myArray[j]; 
+      myArray[j+1] = myArray[j];
     }
-    myArray[j+1] = value; 
+    myArray[j+1] = value;
   }
-  return myArray; 
+  return myArray;
 }
 
 $('#dynamicRowLoadOpen').on('click', '.tableRows', function() {
@@ -350,12 +358,12 @@ $('#dynamicRowLoadOpen').on('click', '.tableRows', function() {
   //load the map when the user clicks on the row. This saves a lot of time instead of loading them all on page load
   //loop through json to get the coordinates and pass them to the initMap function
   $.getJSON("regularHours.json", function(data) {
-    var index = 0; 
+    var index = 0;
     $.each(data, function (key, val) {
       if(theId === val._id){
         initMap(val.theLat, val.theLong, index);
       }
-      ++index; 
+      ++index;
     });
   });
 });
@@ -367,30 +375,30 @@ $('#dynamicRowLoadClosed').on('click', '.tableRows', function() {
   //load the map when the user clicks on the row. This saves a lot of time instead of loading them all on page load
   //loop through json to get the coordinates and pass them to the initMap function
   $.getJSON("regularHours.json", function(data) {
-    var index = 0; 
+    var index = 0;
     $.each(data, function (key, val) {
       if(theId === val._id){
         initMap(val.theLat, val.theLong, index);
       }
-      ++index; 
+      ++index;
     });
   });
 });
 
-var day; 
-var amPm; 
-var theHours; 
-var theMinutes; 
+var day;
+var amPm;
+var theHours;
+var theMinutes;
 
 function getDateTimeInfo(){
-  var currentDate = new Date(); 
+  var currentDate = new Date();
   day = currentDate.getDay();
   theHours = currentDate.getHours();
-  minutes = currentDate.getMinutes(); 
-  //day = 3; 
-  //theHours = 24; 
-  //theMinutes = 0; 
-  /*console.log('day is : ' + day); 
+  minutes = currentDate.getMinutes();
+  //day = 3;
+  //theHours = 24;
+  //theMinutes = 0;
+  /*console.log('day is : ' + day);
   console.log('theHours is : ' + theHours);
   console.log('theMinutes is : ' + theMinutes);*/
 
@@ -432,7 +440,7 @@ function search() {
       } else {
         tr[i].style.display = "none";
       }
-    }      
+    }
 }
   table2 = document.getElementById("closedTable");
   tr2 = table2.getElementsByTagName("tr");
@@ -444,7 +452,7 @@ function search() {
       } else {
         tr2[i].style.display = "none";
       }
-    }     
+    }
   }
 
  }
