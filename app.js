@@ -330,7 +330,7 @@ function loadTheTable(){
         $("#dynamicRowLoadOpen").append(sortedArray[q][2]);
         $("#dynamicHoursLoadOpen" + index).html(sortedArray[q][3]);
         document.getElementById('theMiles' + index).innerHTML = sortedArray[q][0] + ' miles';
-        document.getElementById('openTill' + index).innerHTML = sortedArray[q][5];
+        document.getElementById('openTill' + index).innerHTML = 'Open until ' + sortedArray[q][5];
         document.getElementById('openTill' + index).style = "color: green;";
       }
     }
