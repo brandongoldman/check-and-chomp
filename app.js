@@ -430,6 +430,10 @@ $("#search").on("keyup", function() {
     });
 });
 
+$("#searchForm").submit(function() {
+    search();
+    return false;
+});
 
 // Search Function
 function search() {
