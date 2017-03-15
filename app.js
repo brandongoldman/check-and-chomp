@@ -360,6 +360,9 @@ $('#dynamicRowLoadOpen').on('click', '.tableRows', function() {
   $.getJSON("regularHours.json", function(data) {
     var index = 0;
     $.each(data, function (key, val) {
+      	if(theId.includes("'")){
+      		theId = theId.replace("'", "&#39")
+      	} 
       if(theId === val._id){
         initMap(val.theLat, val.theLong, index);
       }
@@ -377,6 +380,9 @@ $('#dynamicRowLoadClosed').on('click', '.tableRows', function() {
   $.getJSON("regularHours.json", function(data) {
     var index = 0;
     $.each(data, function (key, val) {
+      	if(theId.includes("'")){
+      		theId = theId.replace("'", "&#39")
+      	} 
       if(theId === val._id){
         initMap(val.theLat, val.theLong, index);
       }
