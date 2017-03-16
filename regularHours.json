@@ -385,7 +385,7 @@
    "Friday": "9:00 AM &#45; 5:00 PM",
    "Saturday": "CLOSED",
    "Sunday": "CLOSED",
-   "logoLocation": "locationLogos/Subway.png",
+   "logoLocation": "locationLogos/subway.png",
    "theLat" : 29.648724,
    "theLong": -82.344487
  },
@@ -502,7 +502,7 @@
    "Friday": "8:00 AM &#45; 10:30 PM",
    "Saturday": "8:00 AM &#45; 10:30 PM",
    "Sunday": "8:00 AM &#45; 10:30 PM",
-   "logoLocation": "locationLogos/Subway.png",
+   "logoLocation": "locationLogos/subway.png",
    "theLat" : 29.646471,
    "theLong": -82.348021
  },
