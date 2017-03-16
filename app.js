@@ -410,34 +410,33 @@ function getDateTimeInfo(){
 
 }
 
-$("#search").on("keyup", function() {
-    var value = $(this).val();
+    $("#myInput").on("keyup", function() {
+        var total = $(".tableRows").length,
+            searchTest = new RegExp(this.value, 'i');
 
-    $("table tr").each(function(index) {
-        if (index !== 0) {
+        $(".tableRows").each(function(index) {
+            var name = $(this).find('.locationName').text(),
+                matches = searchTest.test(name);
 
-            $row = $(this);
-
-            var id = $row.find("td:first").text();
-
-            if (id.indexOf(value) !== 0) {
-                $row.hide();
+            if (matches) {
+                $(this).show();
+            } else {
+                $(this).hide();
+                total--;
             }
-            else {
-                $row.show();
-            }
-        }
+        });
+
+        $("#noResults").toggle(total === 0);
     });
-});
 
-$("#searchForm").submit(function() {
-    search();
-    return false;
-});
+    $("#searchForm").submit(function() {
+        return false;
+    });
 
 // Search Function
-function search() {
-  var input, filter, table, tr, td, i;
+/*function search() {
+  var noResults = document.getElementById('noResults');
+  var input, filter, table, tr, td, i, tr2, table2, td2, results; //added results
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table1 = document.getElementById("openTable");
@@ -447,11 +446,16 @@ function search() {
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
+        noResults.innerHTML = "";
       } else {
         tr[i].style.display = "none";
       }
     }
+        results = true; //removed else, added results
+
 }
+    // if elements are in closedTable
+        // we want to parse elements
   table2 = document.getElementById("closedTable");
   tr2 = table2.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
@@ -459,13 +463,21 @@ function search() {
     if (td2) {
       if (td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr2[i].style.display = "";
+        noResults.innerHTML = "";
       } else {
         tr2[i].style.display = "none";
       }
     }
-  }
+      results = true; //removed else, added results
+    }
 
+
+if (results == false){ 
+        noResults.innerHTML = "No Results Found!";  //moved errormessage here
  }
+
+} */ 
+
 
 //source: https://developers.google.com/maps/documentation/javascript/examples/marker-simple
 //source: https://developers.google.com/maps/documentation/javascript/geolocation
