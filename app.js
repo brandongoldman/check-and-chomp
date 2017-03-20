@@ -238,56 +238,65 @@ function loadTheTable(){
               theLocClosHr = 12;
             break;
         }
-        /*console.log(typeof theLocClosHr);
-        console.log('theLocClosHr: ' + theLocClosHr);
-        console.log(typeof theLocOpenHr);
-        console.log('theLocOpenHr: ' + theLocOpenHr);
-        console.log('locClosAmPm: ' + locClosAmPm); */
+        
+        //console.log('theLocClosHr: ' + theLocClosHr);
+        //console.log('theLocClosMin: ' + locClosMin);
+        //console.log('theLocOpenHr: ' + theLocOpenHr);
+        //console.log('locClosAmPm: ' + locClosAmPm); 
         locOpenMin = parseInt(locOpenMin);
         theMinutes = parseInt(theMinutes);
-        /*console.log(typeof locOpenMin);
-        console.log(typeof theMinutes);
-        console.log('locOpenMin: ' + locOpenMin); */
+        //console.log('locOpenMin: ' + locOpenMin); 
         if(theHours == theLocOpenHr){
           if(theMinutes < locOpenMin){
+            //console.log('1');
             status = 0;
           }
           else{
             status = 1;
+            //console.log('2');
           }
         }
         else if(theHours < theLocOpenHr && locClosAmPm === 'AM'){
           if(theHours < theLocClosHr){
+            //console.log('3');
             status = 1;
           }
           else if(theHours == theLocClosHr){
             if(theMinutes < locClosMin){
               status = 1;
+              //console.log('4');
             }
             else{
               status = 0;
+              //console.log('5');
             }
           }
           else{
             status = 0;
+            //console.log('6');
           }
         }
         else if(theLocOpenHr < theHours && theHours < theLocClosHr){
           status = 1;
+          //console.log('7');
         }
         else if(theLocOpenHr < theHours && theHours == theLocClosHr){
           if(theMinutes < locClosMin){
             status = 1;
+            //console.log('8');
           }
           else{
             status = 0;
+            //console.log('9');
           }
         }
         else if(theHours > theLocClosHr && locClosAmPm === 'AM'){
           status = 1;
+          //console.log('10');
         }
         else{
           status = 0;
+          //console.log('11');
         }
       }
 
@@ -400,13 +409,13 @@ function getDateTimeInfo(){
   var currentDate = new Date();
   day = currentDate.getDay();
   theHours = currentDate.getHours();
-  minutes = currentDate.getMinutes();
-  //day = 3;
-  //theHours = 24;
-  //theMinutes = 0;
-  /*console.log('day is : ' + day);
-  console.log('theHours is : ' + theHours);
-  console.log('theMinutes is : ' + theMinutes);*/
+  theMinutes = currentDate.getMinutes();
+  //day = 4;
+  //theHours = 13;
+  //theMinutes = 28;
+  //console.log('day is : ' + day);
+  //console.log('theHours is : ' + theHours);
+  //console.log('theMinutes is : ' + theMinutes);
 
 }
 
